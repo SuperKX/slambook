@@ -1,0 +1,37 @@
+Eigen库笔记：
+/×定义×/
+1、 // Eigen 中所有向量和矩阵都是Eigen::Matrix，它是一个模板类。它的前三个参数为：数据类型，行，列
+   
+    Eigen::Matrix<float, 2, 3> matrix_23;   //声明一个2*3的float矩阵
+
+2、内置类型 // 同时，Eigen 通过 typedef 提供了许多内置类型，不过底层仍是Eigen::Matrix
+    向量定义：  
+    Eigen::Vector3d v_3d;   //Vector3d 实质上是 Eigen::Matrix<double, 3, 1>，即三维向量
+    
+    矩阵定义：  
+    Eigen::Matrix3d matrix_33;  //Matrix3d 实质上是 Eigen::Matrix<double, 3, 3> 
+    Eigen::Matrix< double, Eigen::Dynamic, Eigen::Dynamic > matrix_dynamic; // 如果不确定矩阵大小，可以使用动态大小的矩阵
+    Eigen::MatrixXd matrix_x;  //同上
+   
+/×操作×/
+1、输入数据（初始化）
+    matrix_23 << 1, 2, 3, 4, 5, 6;
+    Eigen::Matrix3d matrix_33 = Eigen::Matrix3d::Zero(); //初始化为零 
+2、输出
+    cout << matrix_23 << endl;
+    
+3、用()访问矩阵中的元素
+    for (int i=0; i<2; i++) {
+        for (int j=0; j<3; j++)
+            cout<<matrix_23(i,j)<<"\t";
+        cout<<endl;
+    }
+
+
+方程求解：
+// Solve Ax = b. Result stored in x. Matlab: x = A \ b.
+x = A.ldlt().solve(b));  // A sym. p.s.d.    #include <Eigen/Cholesky>
+x = A.llt() .solve(b));  // A sym. p.d.      #include <Eigen/Cholesky>
+x = A.lu()  .solve(b));  // Stable and fast. #include <Eigen/LU>
+x = A.qr()  .solve(b));  // No pivoting.     #include <Eigen/QR>
+x = A.svd() .solve(b));  // Stable, slowest. #include <Eigen/SVD>
