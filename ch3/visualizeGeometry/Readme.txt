@@ -5,15 +5,15 @@
 * install dependency for pangolin (mainly the OpenGL): 
 sudo apt-get install libglew-dev
 
-* compile and install pangolin
-cd [path-to-pangolin]
-mkdir build
+* compile and install pangolin  //本机采用方法：先安装git，然后 $ git clone https://github.com/stevenlovegrove/Pangolin.git
+cd [path-to-pangolin]           //cd Pangolin（注意：大写开头）
+mkdir build                     //其他不变
 cd build
 cmake ..
 make 
 sudo make install 
 
-* compile this program:
+* compile this program:         //注意：此处需要cd到visualizeGeometry，而非在Pangolin/build中进行
 mkdir build
 cd build
 cmake ..
