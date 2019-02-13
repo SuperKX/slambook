@@ -1,0 +1,11 @@
+注意：
+
+第一个项目：imageBasics-OpenCV
+1、opencv到安装要彻底，在解压包内cmake->make->还要记得sudo make install， 否则无法通过cmake
+（参考：https://blog.csdn.net/u013066730/article/details/79411767）
+2、imagebasics项目中没有设置初始argv「1」到值，所以需要设置默认值
+（参考：https://blog.csdn.net/goordie/article/details/78160049）
+
+第二个项目：PCL
+1、安装pcl可能出现的问题：https://www.cnblogs.com/lifeofershisui/p/9037829.html 中提到不同于书上第三句的内容。
+
